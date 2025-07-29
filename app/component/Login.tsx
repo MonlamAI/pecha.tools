@@ -8,7 +8,9 @@ import { Button } from "~/shadComponent/ui/button";
 // This form would take us to the auth0 route, which would redirect to the Auth0 login page.
 
 export default function Login() {
-  let { env } = useLoaderData();
+  let { env } = useLoaderData() as {
+    env: { AUTH0_DOMAIN: string; AUTH0_CLIENT_ID: string; NODE_ENV: string };
+  };
   let { AUTH0_DOMAIN, AUTH0_CLIENT_ID, NODE_ENV } = env;
   let location =
     NODE_ENV === "production"
@@ -31,11 +33,12 @@ export default function Login() {
 
   return (
     <Button
+      id="login-btn"
       onClick={handleGoogleLogin}
-      className="text-white w-fit mx-auto bg-blue-600 hover:bg-blue-700 "
+      className="text-white w-fit mx-auto bg-blue-600 hover:bg-blue-700 transition-colors duration-200 px-4 py-2 rounded-md font-medium"
     >
-      <FcGoogle className="text-xl" />
-      <span className="text-lg font-semibold leading-6 ml-3">Google</span>
+      <FcGoogle className="text-xl mr-2" />
+      <span className="text-sm font-medium">Sign in</span>
     </Button>
   );
 }

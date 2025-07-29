@@ -3,16 +3,18 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Link, NavLink, useLoaderData } from "@remix-run/react";
 import Login from "./Login";
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Header() {
-  const { user } = useLoaderData();
+  const { user } = useLoaderData() as {
+    user?: { name: string; email: string; picture: string };
+  };
   return (
     <Disclosure
       as="nav"
-      className="bg-[#1f2228] border-b border-gray-700 w-full z-20 shadow-md header"
+      className="bg-white/95 backdrop-blur-sm border-b border-slate-200 w-full z-20 shadow-sm"
     >
       {({ open }) => (
         <>
@@ -23,7 +25,7 @@ export default function Header() {
                   <NavLink
                     to="/"
                     className={({ isActive, isPending }) =>
-                      "h-10 w-auto text-gray-300 flex gap-3 items-center transition-all duration-200 hover:text-white"
+                      "h-10 w-auto text-slate-600 flex gap-3 items-center transition-all duration-200 hover:text-blue-600"
                     }
                   >
                     <img
@@ -31,7 +33,7 @@ export default function Header() {
                       className="h-full object-contain"
                       alt="logo"
                     />
-                    <h2 className="text-xl font-bold text-[#e9eaeb] sm:truncate sm:text-2xl sm:tracking-tight bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                    <h2 className="text-xl font-bold sm:truncate sm:text-2xl sm:tracking-tight bg-gradient-to-r from-blue-600 via-blue-700 to-yellow-500 bg-clip-text text-transparent">
                       Monlam Tools
                     </h2>
                   </NavLink>
@@ -41,7 +43,7 @@ export default function Header() {
                 {user ? (
                   <Menu as="div" className="relative ml-3">
                     <div>
-                      <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-gray-800 border-2 border-gray-700 hover:border-blue-400 transition-all duration-200">
+                      <Menu.Button className="relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 border-2 border-slate-300 hover:border-blue-400 transition-all duration-200 shadow-sm">
                         <span className="absolute -inset-1.5" />
                         <span className="sr-only">Open user menu</span>
                         <img
@@ -61,12 +63,12 @@ export default function Header() {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-gray-800 py-2 shadow-lg ring-1 ring-gray-700 border border-gray-700 focus:outline-none">
+                      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-slate-200 border border-slate-200 focus:outline-none">
                         <Menu.Item>
                           {({ active }) => (
                             <div
                               className={classNames(
-                                "block px-4 py-2 text-sm text-gray-700"
+                                "block px-4 py-2 text-sm text-slate-700 font-medium"
                               )}
                             >
                               {user.name}
@@ -79,8 +81,8 @@ export default function Header() {
                             <Link
                               to={"/logout"}
                               className={classNames(
-                                active ? "bg-gray-700" : "",
-                                "block px-4 py-2 text-sm text-gray-300 hover:text-white transition-colors duration-200"
+                                active ? "bg-slate-50" : "",
+                                "block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 transition-colors duration-200"
                               )}
                             >
                               Sign out
