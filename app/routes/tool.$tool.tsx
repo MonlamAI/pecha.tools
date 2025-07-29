@@ -35,7 +35,7 @@ export const meta: MetaFunction = ({ params }) => {
     { title: `Pecha_tools | ${toolname}` },
     {
       name: "description",
-      content: "pecha tools is collection of tool used for mt",
+      content: "monlam tools is collection of tool used for mt",
     },
   ];
 };
@@ -55,7 +55,12 @@ function Tool() {
     <>
       <div className="relative  overflow-hidden h-[100dvh]">
         {!loaded && <Loading />}
-        <iframe src={url} onLoad={onLoadFunction} ref={iframeRef} allow="microphone; camera; midi; clipboard-read; clipboard-write" ></iframe>
+        <iframe
+          src={url}
+          onLoad={onLoadFunction}
+          ref={iframeRef}
+          allow="microphone; camera; midi; clipboard-read; clipboard-write"
+        ></iframe>
         <FloatingMenu />
       </div>
     </>

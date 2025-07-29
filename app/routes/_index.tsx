@@ -42,7 +42,7 @@ export const meta: MetaFunction = () => {
     { title: "Pecha_tools" },
     {
       name: "description",
-      content: "pecha tools is collection of tool used for mt",
+      content: "monlam tools is collection of tool used for mt",
     },
   ];
 };
@@ -62,20 +62,21 @@ export default function Index() {
               fontFamily: '"Rubik","Open Sans",sans-serif',
             }}
           >
-            Pecha Tools Collection
+            Monlam Tools Collection
           </h1>
           <p className="text-gray-300 text-lg mb-6 max-w-2xl">
-            A suite of professional tools designed for machine translation and text processing
+            A suite of professional tools designed for machine translation and
+            text processing
           </p>
           <div className="h-1 w-24 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full mb-8"></div>
         </div>
-        
+
         <div className="flex justify-between items-center mb-4 px-2">
           <h2 className="text-xl font-semibold text-gray-200">
             Available Tools
           </h2>
         </div>
-        
+
         <Main tools={data?.tools} />
       </div>
     </div>

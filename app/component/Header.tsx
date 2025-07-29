@@ -32,7 +32,7 @@ export default function Header() {
                       alt="logo"
                     />
                     <h2 className="text-xl font-bold text-[#e9eaeb] sm:truncate sm:text-2xl sm:tracking-tight bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                      Pecha Tools
+                      Monlam Tools
                     </h2>
                   </NavLink>
                 </div>

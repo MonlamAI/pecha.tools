@@ -9,7 +9,7 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   let toolname = params.tool;
   let user = await getUserSession(request);
   let { AUTH0_DOMAIN, AUTH0_CLIENT_ID, NODE_ENV } = process.env;
-  const toolList=await getTools();
+  const toolList = await getTools();
   if (toolList.find((d) => d.name === toolname)) {
     let filtered = toolList.find((tool) => tool.name === toolname);
     let url = filtered?.demo;
@@ -24,10 +24,10 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 export const meta: MetaFunction = ({ params }) => {
   let toolname = params.tool;
   return [
-    { title: `Pecha_tools | demo-${toolname}` },
+    { title: `Monlam_tools | demo-${toolname}` },
     {
       name: "description",
-      content: `demo of pecha tools - ${toolname}`,
+      content: `demo of monlam tools - ${toolname}`,
     },
   ];
 };
