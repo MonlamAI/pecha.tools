@@ -16,7 +16,6 @@ export const loader: LoaderFunction = async ({ request, params }) => {
     let filtered = toolList.filter((tool) => tool.name === toolname);
     let url = filtered[0].url;
     if (!filtered[0].url.includes("session")) {
-      console.log(url);
       url = filtered[0].url + "?session=" + user?.email;
     }
 
